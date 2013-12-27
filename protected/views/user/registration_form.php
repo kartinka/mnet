@@ -21,8 +21,6 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
-
     <div class="control-group">
         <div class="control-label">
             <?php echo $form->labelEx($model,'username'); ?>
@@ -66,7 +64,7 @@
 
     <div class="control-group">
         <div class="control-label">
-            <?php echo $form->labelEx($model,'middle_name'); ?>
+            <?php echo $form->label($model,'middle_name'); ?>
         </div>
         <div class="controls">
             <?php echo $form->textField($model,'middle_name',array('size'=>50,'maxlength'=>50)); ?>

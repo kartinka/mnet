@@ -2,6 +2,7 @@
 
 class SiteController extends Controller
 {
+    public $layout='//layouts/inner';
 	/**
 	 * Declares class-based actions.
 	 */
@@ -29,7 +30,8 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		//$this->render('index');
+       // $this->redirectHome();
 	}
 
 	/**
@@ -106,4 +108,21 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+    /**
+     * Privacy Policy static page
+     */
+    public function actionPrivacy()
+    {
+        $this->render('privacy');
+    }
+
+    /**
+     * Terms of Use static page
+     */
+    public function actionTos()
+    {
+        $this->render('tos');
+    }
+
 }

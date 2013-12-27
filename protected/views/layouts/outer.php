@@ -25,8 +25,8 @@
 
 <div class="foot">
     <hr>
-    <span style="padding-left:12px;">Copyright &copy; 2013 theMednet</span>
-    <a style="padding-right:12px;padding-left:12px;color:#999;" href="/mednet/index.php/site/TOS">Terms of Use</a><a style="padding-right:12px;color:#999;" href="/mednet/index.php/site/Privacy">Privacy Policy</a>
+    <span style="padding-left:12px;">Copyright &copy; 2013 YOUR SITE</span>
+    <a style="padding-right:12px;padding-left:12px;color:#999;" href="<?php echo Yii::app()->request->baseUrl;?>/site/tos">Terms of Use</a><a style="padding-right:12px;color:#999;" href="<?php echo Yii::app()->request->baseUrl;?>/site/privacy">Privacy Policy</a>
 </div><!-- footer -->
 </body>
 </html>

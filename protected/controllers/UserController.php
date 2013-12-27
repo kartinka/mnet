@@ -7,7 +7,7 @@ class UserController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/outer';
-    public $defaultAction = 'login';
+    //public $defaultAction = 'login';
 
 	/**
 	 * @return array action filters
@@ -29,7 +29,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','home', 'login', 'registration', 'recovery'),
+				'actions'=>array(), //('index','home', 'login', 'registration', 'recovery'),
 				'users'=>array('*'),
 			),
             /*
@@ -76,7 +76,7 @@ class UserController extends Controller
             $model->attributes=$_POST['LoginForm'];
             // validate user input and redirect to the previous page if valid
             if($model->validate() && $model->login())
-                $this->redirect(Yii::app()->user->returnUrl);
+                $this->redirectHome();
         }
         // display the login form
         $this->render('login',array('model'=>$model));
@@ -88,12 +88,11 @@ class UserController extends Controller
      */
     public function actionRegistration()
     {
-        /*
         if (!Yii::app()->user->isGuest)
         {
-            $this->redirectToHome();
+            $this->redirectHome();
         }
-        */
+
         $this->layout='//layouts/inner';
         $model=new User;
 
@@ -110,6 +109,15 @@ class UserController extends Controller
             'model'=>$model,
         ));
 
+    }
+
+    /**
+     * Logs out the current user and redirect to homepage.
+     */
+    public function actionLogout()
+    {
+        Yii::app()->user->logout();
+        $this->redirect(Yii::app()->request->baseUrl);
     }
 
 	/**
@@ -189,10 +197,20 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('User');
-		$this->render('login',array(
-			'dataProvider'=>$dataProvider,
-		));
+	    /* no need in users list
+            $dataProvider=new CActiveDataProvider('User');
+            $this->render('login',array(
+                'dataProvider'=>$dataProvider,
+            ));
+	    */
+        if (!Yii::app()->user || Yii::app()->user->isGuest)
+        { //!isset($_POST['User'])) {
+            $this->redirect(array('login'));
+        }
+        else
+        {
+            $this->redirectHome();
+        }
 	}
 
 	/**

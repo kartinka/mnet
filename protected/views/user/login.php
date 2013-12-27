@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 <div class="row">
     <div class="span5">
         <div class="login-leftpane">
-            <img border="1" style="padding: 8px ;" align="ABSMIDDLE" src="/mednet/images/mednet_logo_300.png" alt="theMednet" />			</div>
+            <img border="1" style="padding: 8px ;" align="ABSMIDDLE" src="<?php echo Yii::app()->baseUrl ?>/images/mednet_logo_300.png" alt="theMednet" />			</div>
     </div>
     <div class="span7">
         <div class="login-rightpane">
@@ -20,7 +20,7 @@ $this->breadcrumbs=array(
 
         <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'verticalForm',
-            'enableAjaxValidation'=>true,
+            //'enableAjaxValidation'=>true,
             'enableClientValidation'=>true,
             'clientOptions'=>array(
                 'validateOnSubmit'=>true,
@@ -40,7 +40,7 @@ $this->breadcrumbs=array(
             <?php echo $form->passwordField($model,'password'); ?>
             <?php echo $form->error($model,'password'); ?>
 
-            <label class="checkbox" for="UserLogin_rememberMe">
+            <label class="checkbox" for="LoginForm_rememberMe">
                 <?php echo CHtml::activeCheckBox($model,'rememberMe') . ' Remember me next time'; ?>
             </label>
             <?php echo $form->error($model,'rememberMe'); ?>
@@ -48,7 +48,7 @@ $this->breadcrumbs=array(
             <?php echo CHtml::htmlButton('<i class="icon-ok"></i> ' . 'Submit', array('class'=>'btn', 'type'=>'submit')); ?>
 
     <?php $this->endWidget(); ?>
-    <a href="/mednet/index.php/user/recovery">Forgot Password</a><br /><br />
-    Not a member? Apply <a href="/mednet/index.php/user/registration">Here</a>
+    <a href="<?php echo Yii::app()->baseUrl ?>/user/recovery">Forgot Password</a><br /><br />
+    Not a member? Apply <a href="<?php echo Yii::app()->baseUrl ?>/user/registration">Here</a>
     </div> <!-- right pane-->
 </div><!-- row -->

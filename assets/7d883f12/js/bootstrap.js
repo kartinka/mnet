@@ -678,7 +678,8 @@
 
       if ($this.is('.disabled, :disabled')) return
 
-      $parent = getParent($this)
+      //$parent = getParent($this) HACKED
+      $parent = $this.parent();
 
       isActive = $parent.hasClass('open')
 

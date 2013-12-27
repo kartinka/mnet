@@ -18,11 +18,44 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'application.modules.user.models.*',
+        'application.modules.user.components.*',
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 
+            'user'=>array(
+                # encrypting method (php hash function)
+                'hash' => 'md5',
+
+                # send activation email
+                'sendActivationMail' => true,
+
+                # allow access for non-activated users
+                'loginNotActiv' => false,
+
+                # activate user on registration (only sendActivationMail = false)
+                'activeAfterRegister' => false,
+
+                # automatically login from registration
+                'autoLogin' => true,
+
+                # registration path
+                'registrationUrl' => array('/user/registration'),
+
+                # recovery password path
+                'recoveryUrl' => array('/user/recovery'),
+
+                # login form path
+                'loginUrl' => array('/user/login'),
+
+                # page after login
+                'returnUrl' => array('/user/profile'),
+
+                # page after logout
+                'returnLogoutUrl' => array('/user/login'),
+            ),
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'tinka2901',
@@ -34,13 +67,21 @@ return array(
     'defaultController' => 'User',
 	// application components
 	'components'=>array(
-		'user'=>array(
-			//'allowAutoLogin'=>true,
+        'session' => array(
+            'timeout' => 86400,
+        ),
+        'user'=>array(
+            // enable cookie-based authentication
+            'class' => 'WebUser',
+            'allowAutoLogin'=>true,
             'loginUrl' => array('/user/login'),
-            'authTimeout' => 3600*2
-		),
+            'authTimeout' => 3600*2 // session duration; remember me function will last for this duration if not overridden
+        ),
 		// uncomment the following to enable URLs in path-format
-
+        'authManager'=>array(
+            'class'=>'CDbAuthManager',
+            'defaultRoles'=>array('guest','authenticated', 'admin'),
+        ),
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 		    'showScriptName'=>false,
@@ -59,10 +100,10 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=mednet',
+			'connectionString' => 'mysql:host=tinka.mysql.ukraine.com.ua;dbname=tinka_db',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'tinka_db',
+			'password' => 'KLeNZVgb',
 			'charset' => 'utf8',
 		),
 
@@ -86,7 +127,7 @@ return array(
 			),
 		),
         'bootstrap'=>array(
-            'class'=>'bootstrap.components.Bootstrap',
+            'class'=>'bootstrap.components.Bootstrap'
         ),
 	),
 
