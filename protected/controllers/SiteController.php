@@ -2,7 +2,7 @@
 
 class SiteController extends Controller
 {
-    public $layout='//layouts/inner';
+    public $layout='//layouts/outer';
 	/**
 	 * Declares class-based actions.
 	 */
@@ -30,8 +30,14 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		//$this->render('index');
-       // $this->redirectHome();
+        if (Yii::app()->user->isGuest)
+        {
+            $this->redirect(array('/user/login'));
+        } else {
+            $this->redirectHome();
+
+        }
+        return true;
 	}
 
 	/**

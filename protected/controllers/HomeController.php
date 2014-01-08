@@ -11,7 +11,18 @@ class HomeController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		//$this->render('index');
+        if (!Yii::app()->user || Yii::app()->user->isGuest)
+        { //!isset($_POST['User'])) {
+            var_dump($_POST);
+            //$this->redirect(array('login'));
+        }
+        else
+        {
+            $this->render('index');
+            //$this->redirectHome();
+        }
+
 	}
 
 	/**

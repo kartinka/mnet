@@ -20,7 +20,7 @@ class Question extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'question';
+		return 'tbl_questions';
 	}
 
 	/**

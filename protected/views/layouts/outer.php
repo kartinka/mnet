@@ -12,6 +12,19 @@
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
+<?php
+$this->beginWidget('zii.widgets.CPortlet', array(
+    'title'=>'Operations',
+));
+$this->widget('zii.widgets.CMenu',
+    array(
+        'items'=>$this->menu,
+        'htmlOptions'=>array('class'=>'operations')
+    )
+);
+$this->endWidget();
+?>
+
 <body>
 <div id="wrap">
     <div class="container clear-top" id="main">

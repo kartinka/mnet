@@ -18,95 +18,75 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-        'application.modules.user.models.*',
-        'application.modules.user.components.*',
+		'application.modules.user.models.*',
+		'application.modules.user.components.*',		
 	),
 
 	'modules'=>array(
+		'user'=>array(
+			'hash' => 'md5',
+			'sendActivationMail' => false,
+			'loginNotActiv' => false,
+			'activeAfterRegister' => true,
+			'autoLogin' => false,
+			'registrationUrl' => array('/user/registration'),
+			'recoveryUrl' => array('/user/recovery'),
+			'loginUrl' => array('/user/login'),
+			'returnUrl' => array('/user/profile'),
+			'returnLogoutUrl' => array('/user/login'),
+			),
 		// uncomment the following to enable the Gii tool
-
-            'user'=>array(
-                # encrypting method (php hash function)
-                'hash' => 'md5',
-
-                # send activation email
-                'sendActivationMail' => true,
-
-                # allow access for non-activated users
-                'loginNotActiv' => false,
-
-                # activate user on registration (only sendActivationMail = false)
-                'activeAfterRegister' => false,
-
-                # automatically login from registration
-                'autoLogin' => true,
-
-                # registration path
-                'registrationUrl' => array('/user/registration'),
-
-                # recovery password path
-                'recoveryUrl' => array('/user/recovery'),
-
-                # login form path
-                'loginUrl' => array('/user/login'),
-
-                # page after login
-                'returnUrl' => array('/user/profile'),
-
-                # page after logout
-                'returnLogoutUrl' => array('/user/login'),
-            ),
+		/*
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'tinka2901',
+			'password'=>'Enter Your Password Here',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-
+		*/
 	),
-    'defaultController' => 'User',
+
 	// application components
 	'components'=>array(
-        'session' => array(
-            'timeout' => 86400,
-        ),
-        'user'=>array(
-            // enable cookie-based authentication
-            'class' => 'WebUser',
-            'allowAutoLogin'=>true,
-            'loginUrl' => array('/user/login'),
-            'authTimeout' => 3600*2 // session duration; remember me function will last for this duration if not overridden
-        ),
+		'user'=>array(
+			// enable cookie-based authentication
+			'allowAutoLogin'=>true,
+			'class' => 'WebUser',
+		),
 		// uncomment the following to enable URLs in path-format
-        'authManager'=>array(
-            'class'=>'CDbAuthManager',
-            'defaultRoles'=>array('guest','authenticated', 'admin'),
-        ),
+		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 		    'showScriptName'=>false,
 			'rules'=>array(
-                    '<controller:\w+>/<id:\d+>'=>'<controller>/view',
-                    '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-                    '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-
-        /*
+		
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+			'tablePrefix' => 'tbl_',
 		),
-        */
 		// uncomment the following to use a MySQL database
-
+		/*
 		'db'=>array(
-			'connectionString' => 'mysql:host=tinka.mysql.ukraine.com.ua;dbname=tinka_db',
+			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
 			'emulatePrepare' => true,
-			'username' => 'tinka_db',
-			'password' => 'KLeNZVgb',
+			'username' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 		),
-
+		*/
+        'db'=>array(
+            'connectionString' => 'mysql:host=tinka.mysql.ukraine.com.ua;dbname=tinka_db',
+            'tablePrefix' => 'tbl_',
+            'emulatePrepare' => true,
+            'username' => 'tinka_db',
+            'password' => 'KLeNZVgb',
+            'charset' => 'utf8',
+        ),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -129,12 +109,12 @@ return array(
         'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap'
         ),
-	),
 
+	),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'admin@tinkasworkshop.com',
 	),
 );
