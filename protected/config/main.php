@@ -19,8 +19,11 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.modules.user.models.*',
-		'application.modules.user.components.*',		
-	),
+		'application.modules.user.components.*',
+        'application.modules.message.models.*',
+        'application.modules.message.components.*',
+        'application.extensions.solr.*',
+    ),
 
 	'modules'=>array(
 		'user'=>array(
@@ -32,9 +35,15 @@ return array(
 			'registrationUrl' => array('/user/registration'),
 			'recoveryUrl' => array('/user/recovery'),
 			'loginUrl' => array('/user/login'),
-			'returnUrl' => array('/user/profile'),
+			'returnUrl' => array('/home/index'),
 			'returnLogoutUrl' => array('/user/login'),
+            'defaultController' => 'user',
 			),
+        'message' => array(
+            'userModel' => 'User',
+            'getNameMethod' => 'getFullName',
+            'getSuggestMethod' => 'getSuggest',
+        ),
 		// uncomment the following to enable the Gii tool
 		/*
 		'gii'=>array(
@@ -51,10 +60,11 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+            'loginUrl'=>array('user/login'),
 			'class' => 'WebUser',
 		),
 		// uncomment the following to enable URLs in path-format
-		
+
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 		    'showScriptName'=>false,
@@ -62,9 +72,10 @@ return array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                'topic/view/id/all' => 'topic/view/id/all',
 			),
 		),
-		
+
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 			'tablePrefix' => 'tbl_',
@@ -109,7 +120,6 @@ return array(
         'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap'
         ),
-
 	),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
@@ -117,4 +127,9 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'admin@tinkasworkshop.com',
 	),
+    'behaviors' => array(
+        'onBeginRequest' => array(
+            'class' => 'application.components.RequireLogin'
+        )
+    ),
 );

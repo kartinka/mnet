@@ -34,7 +34,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, email, first_name, middle_name, last_name, speciality, institution, invite_code', 'required'),
+			array('username, password, email, first_name, middle_name, last_name, speciality, invite_code', 'required'),
             array('username',
                 'match', 'not' => true, 'pattern' => '/[^a-zA-Z_-]/',
                 'message' => 'Invalid characters in username.',
@@ -44,10 +44,10 @@ class User extends CActiveRecord
             array('middle_name', 'length', 'max'=>50, 'allowEmpty'=>true),
 			array('password', 'length', 'max'=>128),
 			array('email, speciality', 'length', 'max'=>100),
-			array('institution', 'length', 'max'=>150),
+			//array('institution', 'length', 'max'=>150),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('_id, username, email, first_name, middle_name, last_name, speciality, institution, invite_code', 'safe', 'on'=>'search'),
+			array('_id, username, email, first_name, middle_name, last_name, speciality, invite_code', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,7 +77,7 @@ class User extends CActiveRecord
 			'middle_name' => 'Middle Name',
 			'last_name' => 'Last Name',
 			'speciality' => 'Speciality',
-			'institution' => 'Institution',
+			//'institution' => 'Institution',
 			'invite_code' => 'Invite Code',
 		);
 	}
@@ -109,7 +109,7 @@ class User extends CActiveRecord
 		$criteria->compare('middle_name',$this->middle_name,true);
 		$criteria->compare('last_name',$this->last_name,true);
 		$criteria->compare('specialty',$this->speciality,true);
-		$criteria->compare('institution',$this->institution,true);
+		//$criteria->compare('institution',$this->institution,true);
 		$criteria->compare('invite_code',$this->invite_code);
 
 		return new CActiveDataProvider($this, array(

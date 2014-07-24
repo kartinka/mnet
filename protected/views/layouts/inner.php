@@ -29,19 +29,21 @@
                     'fixed' => 'top',
                     'collapse'=>true, // requires bootstrap-responsive.css
                     'items'=>array(
-                        !Yii::app()->user->isGuest? '<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Search"></form>': '',
+                        !Yii::app()->user->isGuest? '<form class="navbar-search pull-left" action="' . Yii::app()->baseUrl . '/home/search" method="get">
+                            <input id="term" name="term" type="text" class="search-query span2" placeholder="Search">
+                        </form>': '',
                         array(
                             'class'=>'bootstrap.widgets.TbMenu',
                             'htmlOptions'=>array('class'=>'pull-right'),
                             'items'=>array(
                                 array('label'=>'Ask Question', 'url'=>Yii::app()->baseUrl.'/question/create', 'visible'=>!Yii::app()->user->isGuest),
-                                array('label'=>'FAQ', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest),
-                                array('label'=>'Home', 'url'=>Yii::app()->baseUrl.'/home/index', 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'FAQ', 'url'=>Yii::app()->baseUrl.'/topic/view/id/20', 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Home', 'url'=>Yii::app()->baseUrl . '/home/index', 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'My Account', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest,
                                     'items'=>array(
-                                        array('label'=>'Mail', 'url'=>'#'),
-                                        array('label'=>'Edit Profile', 'url'=>'#'),
-                                        array('label'=>'Customize Feed', 'url'=>'#'),
+                                        array('label'=>'Mail', 'url'=> Yii::app()->baseUrl . Yii::app()->getModule('message')->inboxUrl[0]),
+                                        array('label'=>'Edit Profile', 'url'=>Yii::app()->baseUrl .'/user/profile/edit'),
+                                        array('label'=>'Customize Feed', 'url'=>Yii::app()->baseUrl . '/user/following/topicfeed'),
                                         '---',
                                         array('label'=>'Logout', 'url'=> Yii::app()->baseUrl.'/user/logout'),
                                     )
@@ -64,7 +66,7 @@
 </div>
 <div class="footer"><hr>
     <div align="center">
-        Copyright &copy; 2013 YOUR SITE <br/>
+        Copyright &copy; 2014 <?php echo Yii::app()->name;?> <br/>
         All Rights Reserved.
     </div>
 </div><!-- footer -->

@@ -24,14 +24,11 @@ class Controller extends CController
 /*
     protected function beforeAction($action)
     {
-        if((Yii::app()->user->isGuest && ($action->controller->id != 'user' && $action->id != 'login') && $action->controller->id != 'site') || ( Yii::app()->request->url ===  Yii::app()->request->baseUrl))
-        {
-           // $this->redirect(array('/user/login'));
-        }
-
-        return true;
+        if(Yii::app()->user->isGuest)
+            $this->redirect(Yii::app()->getModule('user')->loginUrl);
     }
 */
+
     protected function redirectHome()
     {
       // if (Yii::app()->user->isGuest) {

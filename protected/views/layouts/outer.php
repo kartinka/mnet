@@ -38,7 +38,7 @@ $this->endWidget();
 
 <div class="foot">
     <hr>
-    <span style="padding-left:12px;">Copyright &copy; 2013 YOUR SITE</span>
+    <span style="padding-left:12px;">Copyright &copy; 2014 <?php echo Yii::app()->name;?></span>
     <a style="padding-right:12px;padding-left:12px;color:#999;" href="<?php echo Yii::app()->request->baseUrl;?>/site/tos">Terms of Use</a><a style="padding-right:12px;color:#999;" href="<?php echo Yii::app()->request->baseUrl;?>/site/privacy">Privacy Policy</a>
 </div><!-- footer -->
 </body>

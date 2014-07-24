@@ -23,6 +23,7 @@ class RegistrationController extends Controller
 	public function actionRegistration() {
             $model = new RegistrationForm;
             $profile=new Profile;
+            $job = new Job;
             $profile->regMode = true;
 
 			// ajax validator
@@ -49,7 +50,25 @@ class RegistrationController extends Controller
 						
 						if ($model->save()) {
 							$profile->user_id=$model->id;
-							$profile->save();
+                            $profile->save();
+
+                            // save Institution as current job
+                            $job->user_id = $model->id;
+                            $job->name = '';
+                            $job->from = date("Y");
+                            $job->to = date("Y");
+                            if (trim($_POST['Job']['location']) != '') {
+                                $job->location = trim($_POST['Job']['location']);
+                            } else {
+                                $job->location = 'Not available';
+                            }
+                            if(!$job->save())
+                                $profile->validate();
+
+                            // create User notifications
+                            $notifications = new UserNotifications();
+                            $notifications->save();
+
 							if (Yii::app()->controller->module->sendActivationMail) {
 								$activation_url = $this->createAbsoluteUrl('/user/activation/activation',array("activkey" => $model->activkey, "email" => $model->email));
 								UserModule::sendMail($model->email,UserModule::t("You registered from {site_name}",array('{site_name}'=>Yii::app()->name)),UserModule::t("Please activate you account go to {activation_url}",array('{activation_url}'=>$activation_url)));
@@ -73,9 +92,9 @@ class RegistrationController extends Controller
 								$this->refresh();
 							}
 						}
-					} else $profile->validate();
+					} else {$profile->validate(); if ($_POST['Job']['location']) if ($job->validate(array('location'))) $job->location = ($_POST['Job']['location']);}
 				}
-			    $this->render('/user/registration',array('model'=>$model,'profile'=>$profile));
+			    $this->render('/user/registration',array('model'=>$model,'profile'=>$profile, 'job'=>$job));
 		    }
 	}
 }

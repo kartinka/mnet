@@ -68,12 +68,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'institution'); ?>
-		<?php echo $form->textField($model,'institution',array('size'=>60,'maxlength'=>150)); ?>
-		<?php echo $form->error($model,'institution'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'invite_code'); ?>
 		<?php echo $form->textField($model,'invite_code'); ?>
 		<?php echo $form->error($model,'invite_code'); ?>

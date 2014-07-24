@@ -47,6 +47,6 @@
 <div class="row">
     <div class="span8 offset2">
         <h1>Registration</h1>
-        <?php $this->renderPartial('/user/registration_form', array('model'=>$model, 'profile'=>$profile)); ?>
+        <?php $this->renderPartial('/user/registration_form', array('model'=>$model, 'profile'=>$profile, 'job'=>$job)); ?>
     </div>
 </div>

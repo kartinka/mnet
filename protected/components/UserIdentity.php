@@ -38,7 +38,7 @@ class UserIdentity extends CUserIdentity
             $this->_id=$record->_id;
             $this->setState('username', $record->username);
             $this->setState('specialty', $record->specialty);
-            $this->setState('institution', $record->institution);
+            //$this->setState('institution', $record->institution);
             //$this->setState('isAdmin', $record->IsAdmin);
 
             $this->errorCode=self::ERROR_NONE;

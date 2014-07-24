@@ -2,6 +2,8 @@
 
 class UserController extends Controller
 {
+    public $layout='//layouts/inner';
+    public $defaultAction = 'index';
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
@@ -23,26 +25,82 @@ class UserController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}	
+        return array(
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'actions'=>array('index'),
+                'users'=>array('*'),
+            ),
+        );
+    }
+
+    public function actionAll()
+    {
+        $users = User::model()->with('profile')->findAll(array('order' => 'profile.firstname asc, profile.lastname asc'));
+        $dataProvider_users =  new CArrayDataProvider($users,
+            array( 'keyField' =>'id',
+                'pagination' => array(
+                    'pageSize' => 7,
+                )));
+
+        $this->render('view_all',array(
+            'users' => $dataProvider_users,
+        ));
+    }
 
 	/**
 	 * Displays a particular model.
 	 */
-	public function actionView()
+	public function actionView($id)
 	{
-		$model = $this->loadModel();
-		$this->render('view',array(
-			'model'=>$model,
-		));
+        if ($id == 'me' || $id === Yii::app()->user->id) { // current user (with possibility to edit own extended profile)
+            $model = $this->loadUser(Yii::app()->user->id); //var_dump($model);
+            $owner = true;
+        }
+        else {// any other member
+            $model = $this->loadModel($id);
+            $owner = false;
+
+        }
+
+        $profile=$model->profile;
+
+        $jobs =  new CArrayDataProvider($model->jobs,
+            array('keyField' =>'id',
+        ));
+
+        if (!$owner) {
+            $recent_activity = Answer::model()->with('question')->findAll(array('condition' => 't.author_id = ' . $id, 'limit' => 3));
+
+            $recent_activity_provider =  new CArrayDataProvider($recent_activity,
+                array('keyField' =>'id',
+                ));
+
+            $is_connected = FollowPeople::model()->find(array('condition' => 't.user_id = ' . Yii::app()->user->id . ' AND t.follow_user_id = ' . $id));
+
+            if ($is_connected) {
+                $follow_attributes = array('text' => 'Unfollow', 'class' => 'btn btn-danger');
+            } else {
+                $follow_attributes = array('text' => 'Follow', 'class' => 'btn btn-success');
+            }
+
+            $this->render('view',array(
+                'owner' => $owner,
+                'model'=>$model,
+                'profile'=>$profile,
+                'jobs'=>$jobs,
+                'recent_activity'=>$recent_activity_provider,
+                'follow_attributes'=>$follow_attributes
+            ));
+        }
+        else
+            $this->render('view',array(
+                'owner' => $owner,
+                'model'=>$model,
+                'profile'=>$profile,
+                'jobs'=>$jobs,
+
+            ));
+
 	}
 
 	/**
@@ -50,19 +108,7 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('User', array(
-			'criteria'=>array(
-		        'condition'=>'status>'.User::STATUS_BANNED,
-		    ),
-				
-			'pagination'=>array(
-				'pageSize'=>Yii::app()->controller->module->user_page_size,
-			),
-		));
-
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		$this->redirectHome();
 	}
 
 	/**

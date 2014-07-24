@@ -3,7 +3,7 @@
 class ProfileController extends Controller
 {
 	public $defaultAction = 'profile';
-	public $layout='//layouts/column2';
+	public $layout='//layouts/inner';
 
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
@@ -42,13 +42,19 @@ class ProfileController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			$profile->attributes=$_POST['Profile'];
-			
+
+            $profile->subspecialties = implode(';', $_POST['Profile']['subspecialties']);
+            $profile->degrees = implode(';', $_POST['Profile']['degrees']);
+            $profile->interests = $_POST['Profile']['interests'];
+            $profile->zipcode = $_POST['Profile']['zipcode'];
+
 			if($model->validate()&&$profile->validate()) {
 				$model->save();
 				$profile->save();
+
                 Yii::app()->user->updateSession();
-				Yii::app()->user->setFlash('profileMessage',UserModule::t("Changes is saved."));
-				$this->redirect(array('/user/profile'));
+				Yii::app()->user->setFlash('profileMessage',UserModule::t("Profile changes have been saved"));
+				$this->redirect(array('/home/index'));
 			} else $profile->validate();
 		}
 
@@ -73,7 +79,7 @@ class ProfileController extends Controller
 			}
 			
 			if(isset($_POST['UserChangePassword'])) {
-					$model->attributes=$_POST['UserChangePassword'];
+					$model->attributes=$_POST['UserPictureUpload'];
 					if($model->validate()) {
 						$new_password = User::model()->notsafe()->findbyPk(Yii::app()->user->id);
 						$new_password->password = UserModule::encrypting($model->password);
@@ -86,6 +92,37 @@ class ProfileController extends Controller
 			$this->render('changepassword',array('model'=>$model));
 	    }
 	}
+
+    /**
+     * Profile picture upload
+     */
+    public function actionPictureupload() {
+        if(Yii::app()->user->id)
+            $model=$this->loadUser();
+        else
+            $model=new User;
+
+            if(isset($_POST['User'])) {
+                if(isset($_POST['User']['profile_picture'])){
+
+                    //$model->attributes=$_POST[''];
+                    //if($model->validate()) {
+                        $profile_picture_old = $model->profile_picture;
+                        $model->profile_picture = CUploadedFile::getInstance($model,'profile_picture');
+                        $fileName = Yii::app()->basePath.'/../images/profile/'.Yii::app()->user->id.'.'.$model->profile_picture->extensionName;
+                        if($model->validate()) {
+                            if($model->save()){
+                                $model->profile_picture->saveAs($fileName);
+                                $model->profile_picture = Yii::app()->user->id.'.'.$model->profile_picture->extensionName;
+                                $model->save();
+                            }
+                        } else {
+                            $model->profile_picture = $profile_picture_old;
+                        }
+                }
+            }
+            $this->render('pictureupload',array('model'=>$model));
+    }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

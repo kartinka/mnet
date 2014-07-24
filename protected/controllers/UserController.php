@@ -7,7 +7,7 @@ class UserController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/outer';
-    //public $defaultAction = 'login';
+    public $defaultAction = 'index';
 
 	/**
 	 * @return array action filters
@@ -198,7 +198,7 @@ class UserController extends Controller
 	public function actionIndex()
 	{
 	    /* no need in users list
-            $dataProvider=new CActiveDataProvider('User');
+            $datbrowseaProvider=new CActiveDataProvider('User');
             $this->render('login',array(
                 'dataProvider'=>$dataProvider,
             ));

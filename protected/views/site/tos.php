@@ -6,30 +6,30 @@
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">PLEASE
 READ THIS AGREEMENT CAREFULLY BEFORE USING THIS SITE OR THE MATERIALS.</span></strong><span lang="EN" style="mso-ansi-language:EN"> <o:p></o:p></span></p>
 
-<p><span lang="EN" style="mso-ansi-language:EN">Welcome to YOUR SITE.com. The
-website is owned and operated by Mednet, LLC., ("YOUR SITE"). These
+<p><span lang="EN" style="mso-ansi-language:EN">Welcome to <?php echo Yii::app()->name;?>.com. The
+website is owned and operated by Mednet, LLC., ("<?php echo Yii::app()->name;?>"). These
 website and materials are designed to comply with U.S. laws and regulations.<o:p></o:p></span></p>
 
 <p><span lang="EN" style="mso-ansi-language:EN">This is a binding agreement
-("Agreement") between YOUR SITE, Inc. and you ("You" or
-Your"). This Agreement governs Your use of the website (<a href="<?php echo Yii::app()->request->baseUrl;?>">YOUR SITE</a>) (the "Site" or
+("Agreement") between <?php echo Yii::app()->name;?>, Inc. and you ("You" or
+Your"). This Agreement governs Your use of the website (<a href="<?php echo Yii::app()->request->baseUrl;?>"><?php echo Yii::app()->name;?></a>) (the "Site" or
 "Sites"), including, without limitation, all content such as text,
-information, images, YOUR SITE, online community, software and other
+information, images, <?php echo Yii::app()->name;?>, online community, software and other
 information, services and materials (collectively, the "Materials")
-and all information made available to You or by You through this Site by YOUR SITE
+and all information made available to You or by You through this Site by <?php echo Yii::app()->name;?>
 and/or third parties.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">1.
 OWNERSHIP OF MATERIALS</span></strong><span lang="EN" style="mso-ansi-language:
 EN"> <br>
-All Materials are provided by YOUR SITE unless indicated otherwise. All
+All Materials are provided by <?php echo Yii::app()->name;?> unless indicated otherwise. All
 intellectual property rights in the Materials (including copyrights,
-trademarks, trade secrets and patents) are the property of YOUR SITE unless
-indicated otherwise. YOUR SITE retains all copyrights in the individual pages,
+trademarks, trade secrets and patents) are the property of <?php echo Yii::app()->name;?> unless
+indicated otherwise. <?php echo Yii::app()->name;?> retains all copyrights in the individual pages,
 and their components, and collective works available at the Site. The Materials
 are copyrighted and are protected by federal and worldwide copyright laws and
 treaty provisions. They may not be copied, reproduced, modified, published,
-uploaded, posted, transmitted, performed, or distributed in any way, without YOUR SITE's
+uploaded, posted, transmitted, performed, or distributed in any way, without <?php echo Yii::app()->name;?>'s
 prior written permission. <o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">2. USE
@@ -43,13 +43,13 @@ performance, sale or rental; (b) decompile, reverse engineer, disassemble or
 make derivative works of the Materials; (c) remove any confidentiality,
 privacy, patent, copyright, trademark or other proprietary notices from the
 Materials; (d) transfer the Materials to another person or entity in manners
-inconsistent with this Agreement and current YOUR SITE policies. You agree to
+inconsistent with this Agreement and current <?php echo Yii::app()->name;?> policies. You agree to
 prevent any unauthorized copying of the Materials or information.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">3.
 TERMINATION OF THIS USE LICENSE</span></strong><span lang="EN" style="mso-ansi-language:
 EN"> <br>
-YOUR SITE may terminate this use license at any time if You are in breach of the
+<?php echo Yii::app()->name;?> may terminate this use license at any time if You are in breach of the
 terms of this Agreement. Upon termination, You will immediately destroy any
 Materials in your possession, if any, and cease use of the Site.<o:p></o:p></span></p>
 
@@ -57,12 +57,12 @@ Materials in your possession, if any, and cease use of the Site.<o:p></o:p></spa
 CONDITIONS OF USE AND TERMS</span></strong><span lang="EN" style="mso-ansi-language:
 EN"> <br>
 To use any Materials, You must (a) be a currently licensed physician in the US,
-(b) be a registered participant of YOUR SITE.com, and (c) be a resident in the
+(b) be a registered participant of <?php echo Yii::app()->name;?>.com, and (c) be a resident in the
 50 states of the United States of America, exclusive of its commonwealths,
 territories and possessions ("United States"). <o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">5. SECURITY</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
-This Site is intended by YOUR SITE to require a valid, working e-mail address
+This Site is intended by <?php echo Yii::app()->name;?> to require a valid, working e-mail address
 and password to access and use the Materials on the Site. Certain other
 Materials or functionalities on the Site may require additional access codes.
 You are solely responsible for (1) maintaining the strict confidentiality of
@@ -70,24 +70,24 @@ the e-mail address, passwords and codes (collectively, "ID(s)")
 assigned to you, (2) not allowing another person to use your IDs to access the
 Site, (3) any damages or losses that may be incurred or suffered as a result of
 You or Your failure to maintain the strict confidentiality of Your ID, and (4)
-promptly informing YOUR SITE in writing of any need to deactivate an ID due to
-potential or actual security concerns. YOUR SITE is not liable for any harm
+promptly informing <?php echo Yii::app()->name;?> in writing of any need to deactivate an ID due to
+potential or actual security concerns. <?php echo Yii::app()->name;?> is not liable for any harm
 related to the theft of Your ID, Your disclosure of Your ID, or Your
 authorization to allow another person or entity to access and use the Site
-using Your ID. You agree to immediately notify YOUR SITE in writing of any
+using Your ID. You agree to immediately notify <?php echo Yii::app()->name;?> in writing of any
 unauthorized use of Your ID.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">6.
 MEDICAL DISCLAIMERS</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
 The Materials available are for informational and educational purposes only and
 are not a substitute for the professional judgment of a health care
-professional in diagnosing and treating patients. YOUR SITE or You are not
+professional in diagnosing and treating patients. <?php echo Yii::app()->name;?> or You are not
 permitted to advise, diagnose, or otherwise treat users of this Site. Neither
 the content nor any other service offered by or through this Site is intended
 to be for medical diagnosis or treatment. Persons accessing this information
-assume full responsibility for the use of the information and agree that YOUR SITE,
+assume full responsibility for the use of the information and agree that <?php echo Yii::app()->name;?>,
 Inc. is not responsible or liable for any claim, loss, or damage arising from
-the use of the information. YOUR SITE does not recommend or endorse any
+the use of the information. <?php echo Yii::app()->name;?> does not recommend or endorse any
 specific drugs, tests, physicians, products, procedures, opinions,
 "off-label" drug uses or other information that may be mentioned on
 the Site. Your reliance upon the Materials obtained or used by You is solely at
@@ -123,7 +123,7 @@ thereafter, solely responsible for obtaining and maintaining all patient
 consents, if applicable, and all other legally necessary consents or
 permissions required or advisable to disclose, process, retrieve, transmit, and
 view the Patient Information You transmit, store, or receive in connection with
-the Site, the Materials and any third party site. You agree that YOUR SITE, YOUR SITE's
+the Site, the Materials and any third party site. You agree that <?php echo Yii::app()->name;?>, <?php echo Yii::app()->name;?>'s
 licensors and licensees, and all other persons or entities involved in the
 operation of the Materials and functionalities provided through the Site, have
 the right to monitor, retrieve, store, review and use Patient Information, if
@@ -134,7 +134,7 @@ acting on Your behalf in transmitting Patient Information.<o:p></o:p></span></p>
 RESPONSIBILITY FOR YOUR USE OR MISUSE OF PATIENT INFORMATION OR OTHER
 INFORMATION TRANSMITTED, MONITORED, STORED OR RECEIVED WHILE USING THE SITE OR
 THE MATERIALS. WE RESERVE THE RIGHT TO AMEND OR DELETE ANY MATERIAL (ALONG WITH
-THE RIGHT TO REVOKE ANY MEMBERSHIP OR RESTRICT ACCESS TO YOUR SITE) THAT IN OUR
+THE RIGHT TO REVOKE ANY MEMBERSHIP OR RESTRICT ACCESS TO <?php echo Yii::app()->name;?>) THAT IN OUR
 SOLE DISCRETION VIOLATES THE ABOVE.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">9.
@@ -143,7 +143,7 @@ THE MATERIALS AND THE SITE IS PROVIDED "AS IS" WITHOUT ANY EXPRESS OR
 IMPLIED WARRANTY OF ANY KIND INCLUDING WARRANTIES OF MERCHANTABILITY,
 NON-INFRINGEMENT OF INTELLECTUAL PROPERTY, OR FITNESS FOR ANY PARTICULAR
 PURPOSE OR WARRANTIES ARISING BY COURSE OF DEALING OR CUSTOM OR TRADE. IN NO
-EVENT SHALL YOUR SITE, ITS PARENTS, SUBSIDIARIES, AFFILIATES AND THEIR
+EVENT SHALL <?php echo Yii::app()->name;?>, ITS PARENTS, SUBSIDIARIES, AFFILIATES AND THEIR
 RESPECTIVE MEMBERS, DIRECTORS, OFFICERS, EMPLOYEES, STOCKHOLDERS AND AGENTS BE
 LIABLE TO YOU OR ANY OTHER ENTITY FOR ANY AND ALL DAMAGES INCLUDING BUT NOT
 LIMITED TO DIRECT, COMPENSATORY, INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL,
@@ -155,9 +155,9 @@ ERRORS, INACCURACIES, OMISSIONS, DEFECTS, UNTIMELINESS, SECURITY BREACHES, OR
 (4) INFORMATION COMMUNICATED THROUGH THE SITE OR EMAIL, (5) THE
 COMPLIANCE WITH ANY LAW, RULE, REGULATION, LAW ENFORCEMENT, GOVERNMENT
 OFFICIALS OR LEGAL AUTHORITY OR THE LIKE, OR (6) ANY OTHER FAILURE TO PERFORM
-BY YOUR SITE OR YOUR SITE'S CONTENT PROVIDERS. THE FOREGOING SHALL APPLY
-REGARDLESS OF WHETHER YOUR SITE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
-DAMAGES. YOUR SITE ALSO MAKES NO REPRESENTATIONS OR WARRANTIES THAT YOUR ACCESS
+BY <?php echo Yii::app()->name;?> OR <?php echo Yii::app()->name;?>'S CONTENT PROVIDERS. THE FOREGOING SHALL APPLY
+REGARDLESS OF WHETHER <?php echo Yii::app()->name;?> HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES. <?php echo Yii::app()->name;?> ALSO MAKES NO REPRESENTATIONS OR WARRANTIES THAT YOUR ACCESS
 TO AND USE OF THE SITE, MATERIALS, OR THIRD PARTY SITES (1) WILL BE
 UNINTERRUPTED OR ERROR-FREE, (2) IS FREE OF VIRUSES, UNAUTHORIZED CODE, OR
 OTHER HARMFUL COMPONENTS, (3) IS SECURE, OR (4) WILL MEET YOUR SATISFACTION.
@@ -165,32 +165,32 @@ YOU ARE RESPONSIBLE FOR TAKING ALL PRECAUTIONS YOU BELIEVE NECESSARY OR
 ADVISABLE TO PROTECT YOU AGAINST ANY CLAIM, DAMAGE, LOSS OR HAZARD THAT MAY
 ARISE BY VIRTUE OF YOUR USE OF THE SITE. Because some jurisdictions may not
 permit each of these disclaimers and limitations, the above limitation may not
-apply to You. YOUR SITE and its parents, subsidiaries, affiliates and their
+apply to You. <?php echo Yii::app()->name;?> and its parents, subsidiaries, affiliates and their
 respective members, directors, officers, employees, stockholders and agents
 further do not warrant the accuracy or completeness of the information, text,
-graphics, links or other items contained within these Materials. YOUR SITE may
+graphics, links or other items contained within these Materials. <?php echo Yii::app()->name;?> may
 make changes to these Materials, or to the services and/or products described
-therein, at any time without notice. YOUR SITE makes no commitment to update
+therein, at any time without notice. <?php echo Yii::app()->name;?> makes no commitment to update
 the Materials. Any description of Materials is not a representation that any
 such Materials are available for sale or distribution in Your location.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">10.
 LIMITATION OF LIABILITY</span></strong><span lang="EN" style="mso-ansi-language:
 EN"> <br>
-IF, NOTWITHSTANDING THE OTHER TERMS OF THIS AGREEMENT, YOUR SITE SHOULD HAVE
-ANY LIABILITY TO YOU OR ANY THIRD PARTY FOR ANY LOSS, HARM OR DAMAGE, YOU AND YOUR SITE
+IF, NOTWITHSTANDING THE OTHER TERMS OF THIS AGREEMENT, <?php echo Yii::app()->name;?> SHOULD HAVE
+ANY LIABILITY TO YOU OR ANY THIRD PARTY FOR ANY LOSS, HARM OR DAMAGE, YOU AND <?php echo Yii::app()->name;?>
 AGREE THAT SUCH LIABILITY SHALL UNDER NO CIRCUMSTANCES EXCEED THE VALUE OF
-$50.00. YOU AND YOUR SITE AGREE THAT THE FOREGOING LIMITATION OF LIABILITY IS
-AN AGREED ALLOCATION OF RISK BETWEEN YOU AND YOUR SITE. YOU ACKNOWLEDGE THAT
-ABSENT YOUR AGREEMENT TO THIS LIMITATION OF LIABILITY, YOUR SITE WOULD NOT
+$50.00. YOU AND <?php echo Yii::app()->name;?> AGREE THAT THE FOREGOING LIMITATION OF LIABILITY IS
+AN AGREED ALLOCATION OF RISK BETWEEN YOU AND <?php echo Yii::app()->name;?>. YOU ACKNOWLEDGE THAT
+ABSENT YOUR AGREEMENT TO THIS LIMITATION OF LIABILITY, <?php echo Yii::app()->name;?> WOULD NOT
 PROVIDE THE SITE OR MATERIALS TO YOU.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">11.
 INDEMNITY</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
-You agree to defend, indemnify and hold YOUR SITE, its parents, subsidiaries,
+You agree to defend, indemnify and hold <?php echo Yii::app()->name;?>, its parents, subsidiaries,
 affiliates and their respective members, directors, officers, employees,
 stockholders and agents harmless against any losses, expenses, costs or damages
-(including YOUR SITE's reasonable attorneys' fees, expert fees' and other
+(including <?php echo Yii::app()->name;?>'s reasonable attorneys' fees, expert fees' and other
 reasonable costs of litigation) arising from, incurred as a result of, or in
 any manner related to (1) Your breach of this Agreement, (2) Your unauthorized
 or unlawful use of the Site or the Materials, and (3) the unauthorized or
@@ -203,50 +203,50 @@ USER SUBMISSIONS</span></strong><span lang="EN" style="mso-ansi-language:EN"> <o
 Unless otherwise agreed in writing prior to Your submission, any material,
 information or other communication You transmit or post to the Site or third
 party site will be considered non-confidential and non-proprietary
-("Communications"). YOUR SITE will have no obligations with respect
-to the Communications. You agree that from time to time YOUR SITE may invite or
+("Communications"). <?php echo Yii::app()->name;?> will have no obligations with respect
+to the Communications. You agree that from time to time <?php echo Yii::app()->name;?> may invite or
 otherwise make You aware of certain educational, promotional or financial
 opportunities relating to Your Communications and profile.<o:p></o:p></span></p>
 
-<p><span lang="EN" style="mso-ansi-language:EN">YOUR SITE hereby grants You a
+<p><span lang="EN" style="mso-ansi-language:EN"><?php echo Yii::app()->name;?> hereby grants You a
 non-exclusive, non-transferable license to re-use or republish your own
-contributions made to the YOUR SITE Site in its original or derivative form for
+contributions made to the <?php echo Yii::app()->name;?> Site in its original or derivative form for
 republication elsewhere, such as in journals or other professional
 publications. This license is restricted to Your own contributions and does not
-grant You rights to republish the contributions or postings of other YOUR SITE
-members. YOUR SITE and its designees will be free to use for any purpose, copy,
+grant You rights to republish the contributions or postings of other <?php echo Yii::app()->name;?>
+members. <?php echo Yii::app()->name;?> and its designees will be free to use for any purpose, copy,
 disclose, sell, distribute, perform, incorporate and otherwise use the
 Communications and all data, images, sounds, text, and other things embodied
 therein for any and all commercial or non-commercial purposes to the extent
-permitted by applicable law. YOUR SITE shall be free to use any ideas,
+permitted by applicable law. <?php echo Yii::app()->name;?> shall be free to use any ideas,
 concepts, know-how or techniques contained in such information for any purpose
 whatsoever including, but not limited to, developing, manufacturing, and
 marketing products and services incorporating such information. You are
 prohibited from posting or transmitting to or from this Site any unlawful,
 infringing, threatening, libelous, defamatory, obscene, pornographic, or other
 material that would violate any law. You are prohibited from revealing the name
-or other personally identifying information of any other YOUR SITE member
+or other personally identifying information of any other <?php echo Yii::app()->name;?> member
 unless that individual has previously revealed his or her own name or
-personally identifying information in that specific YOUR SITE post. Any attempt
+personally identifying information in that specific <?php echo Yii::app()->name;?> post. Any attempt
 to obtain unauthorized access or to exceed authorized access to the Site shall
 be considered a trespass and computer fraud and abuse, punishable under state
-and federal laws. YOUR SITE hereby notifies You that any or all Communications
+and federal laws. <?php echo Yii::app()->name;?> hereby notifies You that any or all Communications
 with this Site can and will be monitored, captured, recorded, and transmitted
-to the authorities as deemed necessary by YOUR SITE in its sole discretion and
-without further notice. You are reminded that YOUR SITE does not collect
+to the authorities as deemed necessary by <?php echo Yii::app()->name;?> in its sole discretion and
+without further notice. You are reminded that <?php echo Yii::app()->name;?> does not collect
 personal health information about individuals. To submit a post, You must
-provide and upload information to the YOUR SITE server. Within Your uploaded
-submission, YOUR SITE does not collect or maintain information that would
+provide and upload information to the <?php echo Yii::app()->name;?> server. Within Your uploaded
+submission, <?php echo Yii::app()->name;?> does not collect or maintain information that would
 associate this submission with a specific patient or individual. The Health
 Insurance Portability and Accountability Act of 1996 (HIPAA) privacy rule,
 which took effect on April 14, 2003, allows for the use of de-identified health
 information so long as identifiers have been "stripped" and a key is
-not disclosed that would allow the information to be re-identified. YOUR SITE
+not disclosed that would allow the information to be re-identified. <?php echo Yii::app()->name;?>
 does not possess a key to re-identify patient data.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">13.
 COOPERATION WITH GOVERNMENT AUTHORITIES</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
-If necessary and in accordance with applicable law, YOUR SITE will comply with
+If necessary and in accordance with applicable law, <?php echo Yii::app()->name;?> will comply with
 local, state, federal, international and/or worldwide with all laws, rules,
 regulations, law enforcement, government officials, legal authority or the
 like.<o:p></o:p></span></p>
@@ -254,30 +254,30 @@ like.<o:p></o:p></span></p>
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">14.
 LINKS TO OTHER MATERIALS</span></strong><span lang="EN" style="mso-ansi-language:
 EN"> <br>
-The linked sites are not necessarily under the control of YOUR SITE and YOUR SITE
+The linked sites are not necessarily under the control of <?php echo Yii::app()->name;?> and <?php echo Yii::app()->name;?>
 is not responsible for nor does it certify the content of any linked site or
-any link contained in a non-affiliated linked site. YOUR SITE reserves the
-right to terminate any link or linking program at any time. YOUR SITE has
+any link contained in a non-affiliated linked site. <?php echo Yii::app()->name;?> reserves the
+right to terminate any link or linking program at any time. <?php echo Yii::app()->name;?> has
 selected the links for Your convenience. The selection or omission of links is
 not intended to endorse any particular companies or products. If You decide to
 access any of the third party sites linked to this Site, You do this entirely
 at Your own risk. Any links to any portion of the Site shall be the
-responsibility of the linking party, and YOUR SITE shall not be responsible for
-notification of any change in name or location of any information of the Site. YOUR SITE
+responsibility of the linking party, and <?php echo Yii::app()->name;?> shall not be responsible for
+notification of any change in name or location of any information of the Site. <?php echo Yii::app()->name;?>
 reserves the right to request any web site administrator to disable or remove
-any link that violates any rights of YOUR SITE or causes interruption or
-deterioration of Materials provided by YOUR SITE. Failure to abide by this
+any link that violates any rights of <?php echo Yii::app()->name;?> or causes interruption or
+deterioration of Materials provided by <?php echo Yii::app()->name;?>. Failure to abide by this
 request shall be dealt with as provided in this section.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">15.
 DISPUTE RESOLUTION</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
-Any dispute between YOUR SITE and You arising out of this Agreement shall be
-resolved first by direct communication with one or more of YOUR SITE's
-management team members. Should YOUR SITE and You be unable to resolve the
-dispute by communication and both You and YOUR SITE jointly agree to do so, YOUR SITE
+Any dispute between <?php echo Yii::app()->name;?> and You arising out of this Agreement shall be
+resolved first by direct communication with one or more of <?php echo Yii::app()->name;?>'s
+management team members. Should <?php echo Yii::app()->name;?> and You be unable to resolve the
+dispute by communication and both You and <?php echo Yii::app()->name;?> jointly agree to do so, <?php echo Yii::app()->name;?>
 or You may submit any dispute arising out of or relating to this Agreement, or
 the breach thereof, to final and binding arbitration administered by the
-American Arbitration Association nearest the place of YOUR SITE's headquarters
+American Arbitration Association nearest the place of <?php echo Yii::app()->name;?>'s headquarters
 and pursuant to Delaware law. The arbitrator shall fully implement the intent
 and purposes of this Agreement. The party found liable shall indemnify the
 other party for and hold them harmless from all losses, costs, and expenses
@@ -288,27 +288,27 @@ be unfounded.<o:p></o:p></span></p>
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">16.
 ENTIRE AGREEMENT</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
 This Agreement, including the <a href="/mednet/index.php/site/Privacy">Privacy
-            Policy</a>, and any other YOUR SITE policy which is incorporated herein by this
-reference, contains the entire agreement between You and YOUR SITE relating to
+            Policy</a>, and any other <?php echo Yii::app()->name;?> policy which is incorporated herein by this
+reference, contains the entire agreement between You and <?php echo Yii::app()->name;?> relating to
 the subject matter hereof, and supersedes any other oral or written communications
 relating thereto. This Agreement may not be amended or supplemented by (1) any
 purchase order or similar form originated by You relating to the subject matter
-hereof, or (2) statements of any of YOUR SITE's employees.<o:p></o:p></span></p>
+hereof, or (2) statements of any of <?php echo Yii::app()->name;?>'s employees.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">17.
 TERMINATION</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
 Your right to access and use the Site and Materials immediately terminates
-without further notice upon Your breach of this Agreement. YOUR SITE may
+without further notice upon Your breach of this Agreement. <?php echo Yii::app()->name;?> may
 terminate this Agreement and/or Your right to use the Site and Materials at any
-time, with or without cause. YOUR SITE reserves the right to discontinue or
+time, with or without cause. <?php echo Yii::app()->name;?> reserves the right to discontinue or
 make changes to the Site and/or Materials at any time.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">18.
 ASSIGNMENT</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
-YOUR SITE may assign this Agreement, in whole or in part, in its sole
-discretion. You may not assign Your rights under this Agreement without YOUR SITE's
+<?php echo Yii::app()->name;?> may assign this Agreement, in whole or in part, in its sole
+discretion. You may not assign Your rights under this Agreement without <?php echo Yii::app()->name;?>'s
 prior written permission. Any attempt by You to assign Your rights under this
-Agreement without YOUR SITE's permission shall be void.<o:p></o:p></span></p>
+Agreement without <?php echo Yii::app()->name;?>'s permission shall be void.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">19.
 WAIVER OF BREACH</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
@@ -320,24 +320,24 @@ that or any other term or provision of this Agreement.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">20.
 FORCE MAJEURE</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
-YOUR SITE shall not be liable for any failure or unavailability of the Site
-and/or the Materials or failure by YOUR SITE to perform a transaction as a
+<?php echo Yii::app()->name;?> shall not be liable for any failure or unavailability of the Site
+and/or the Materials or failure by <?php echo Yii::app()->name;?> to perform a transaction as a
 result of strikes, lockouts, calamities, acts of God, unavailability of suppliers,
 the loss or destruction of data, the deletion or corruption of storage media,
 power failures, natural phenomena, riots, acts of vandalism, acts or omissions
-of civil or military authority, war, terrorism or any other event beyond YOUR SITE's
+of civil or military authority, war, terrorism or any other event beyond <?php echo Yii::app()->name;?>'s
 control.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">21. NOTICE</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
-YOUR SITE may deliver notice to You under this Agreement by means of electronic
-mail, a general notice on <a href="<?php echo Yii::app()->request->baseUrl;?>">YOUR SITE</a>,
+<?php echo Yii::app()->name;?> may deliver notice to You under this Agreement by means of electronic
+mail, a general notice on <a href="<?php echo Yii::app()->request->baseUrl;?>"><?php echo Yii::app()->name;?></a>,
 or by written communication delivered by first class U.S. mail to Your address
-on record in YOUR SITE's account information. You may give notice to YOUR SITE
-at any time via electronic mail to <a href="mailto:info@YOUR SITE.com">info@YOUR SITE.com</a>
+on record in <?php echo Yii::app()->name;?>'s account information. You may give notice to <?php echo Yii::app()->name;?>
+at any time via electronic mail to <a href="mailto:info@<?php echo Yii::app()->name;?>.com">info@<?php echo Yii::app()->name;?>.com</a>
 <o:p></o:p></span></p>
 
 <p><span lang="EN" style="mso-ansi-language:EN">If You object to any material
-found on this Site, please bring Your concerns to the attention of [<a href="mailto:info@YOUR SITE.com">info@YOUR SITE.com</a>]. The Site administrator
+found on this Site, please bring Your concerns to the attention of [<a href="mailto:info@<?php echo Yii::app()->name;?>.com">info@<?php echo Yii::app()->name;?>.com</a>]. The Site administrator
 reserves the right to remove any material alleged to be infringing any
 third-party rights pending further investigation.<o:p></o:p></span></p>
 
@@ -361,14 +361,14 @@ maximum extent permitted in such circumstances.<o:p></o:p></span></p>
 
 <p><strong><span lang="EN" style="font-family:Times;mso-ansi-language:EN">24.
 GENERAL</span></strong><span lang="EN" style="mso-ansi-language:EN"> <br>
-YOUR SITE reserves the right to make changes to this Agreement at any time
-without advance notice. YOUR SITE agrees to post all amended forms of this
+<?php echo Yii::app()->name;?> reserves the right to make changes to this Agreement at any time
+without advance notice. <?php echo Yii::app()->name;?> agrees to post all amended forms of this
 Agreement on the Site and such amended forms shall be effective immediately
 upon its posting. It is at all times Your responsibility to read the most
 current form of this Agreement before using the Site to ensure that You agree
 to the terms and conditions of any amendments made to this Agreement. You agree
 that these standards for notice of amendments to this Agreement are reasonable.
-You understand and agree that if you use the YOUR SITE services or access the
+You understand and agree that if you use the <?php echo Yii::app()->name;?> services or access the
 Site after the date on which the amendment has been posted, You consent to the
 such amendment.<o:p></o:p></span></p>
 

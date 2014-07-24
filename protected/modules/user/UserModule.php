@@ -95,6 +95,7 @@ class UserModule extends CWebModule
 	public $tableUsers = '{{users}}';
 	public $tableProfiles = '{{profiles}}';
 	public $tableProfileFields = '{{profiles_fields}}';
+    public $tableUserNotifications = '{{user_notifications}}';
 
     public $defaultScope = array(
             'with'=>array('profile'),
@@ -223,7 +224,7 @@ class UserModule extends CWebModule
 	    $headers = "MIME-Version: 1.0\r\nFrom: $adminEmail\r\nReply-To: $adminEmail\r\nContent-Type: text/html; charset=utf-8";
 	    $message = wordwrap($message, 70);
 	    $message = str_replace("\n.", "\n..", $message);
-	    var_dump (mail($email,'=?UTF-8?B?'.base64_encode($subject).'?=',$message,$headers)); die();
+        return mail($email,'=?UTF-8?B?'.base64_encode($subject).'?=',$message,$headers);
 	}
 	
 	/**

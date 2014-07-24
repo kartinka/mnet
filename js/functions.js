@@ -1,3 +1,14 @@
+function showCommentForm(target) {
+    var s;
+    s = $(target).prop('id').split('_');
+    $('#comment-form-' + s[2]).toggle();
+}
+
+function showJobForm() {
+    $('#job-form').toggle();
+    $('#add_position').toggle();
+}
+
 function follow(id,type,style,text)
 {
 style = (typeof style === "undefined") ? "button" : style; //button or link

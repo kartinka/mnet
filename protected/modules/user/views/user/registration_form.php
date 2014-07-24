@@ -15,7 +15,7 @@
     ),
     'errorMessageCssClass'=>'help-block error',
     'htmlOptions'=>array(
-        'class'=>'well form-horizontal',
+            'class'=>'well form-horizontal',
     ),
 )); ?>
 
@@ -92,6 +92,15 @@
     }
     ?>
 
+    <div class="control-group">
+        <div class="control-label">
+            <?php echo $form->labelEx($job,'location'); ?>
+        </div>
+        <div class="controls">
+            <?php echo $form->textField($job,'location',array('size'=>60, 'cols'=>30, 'maxlength'=>1000)); ?>
+            <?php echo $form->error($job,'location'); ?>
+        </div>
+    </div>
 
     <div class="form-actions">
         <?php //echo CHtml::submitButton(UserModule::t("Register")); ?>

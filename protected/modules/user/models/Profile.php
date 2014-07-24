@@ -43,7 +43,7 @@ class Profile extends UActiveRecord
 			$rules = array();
 			
 			$model=$this->getFields();
-			
+
 			foreach ($model as $field) {
 				$field_rule = array();
 				if ($field->required==ProfileField::REQUIRED_YES_NOT_SHOW_REG||$field->required==ProfileField::REQUIRED_YES_SHOW_REG)
@@ -55,9 +55,11 @@ class Profile extends UActiveRecord
 				if ($field->field_type=='INTEGER')
 					array_push($numerical,$field->varname);
 				if ($field->field_type=='VARCHAR'||$field->field_type=='TEXT') {
-					$field_rule = array($field->varname, 'length', 'max'=>$field->field_size, 'min' => $field->field_size_min);
-					if ($field->error_message) $field_rule['message'] = UserModule::t($field->error_message);
-					array_push($rules,$field_rule);
+                    if ($field->field_size && $field->field_size_min) {
+					    $field_rule = array($field->varname, 'length', 'max'=>$field->field_size, 'min' => $field->field_size_min);
+    					if ($field->error_message) $field_rule['message'] = UserModule::t($field->error_message);
+	    				array_push($rules,$field_rule);
+                    }
 				}
 				if ($field->other_validator) {
 					if (strpos($field->other_validator,'{')===0) {
@@ -94,8 +96,11 @@ class Profile extends UActiveRecord
 			array_push($rules,array(implode(',',$numerical), 'numerical', 'integerOnly'=>true));
 			array_push($rules,array(implode(',',$float), 'type', 'type'=>'float'));
 			array_push($rules,array(implode(',',$decimal), 'match', 'pattern' => '/^\s*[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?\s*$/'));
+
+            if ($field->varname == 'zipcode')
+                array_push($rules, array('zipcode', 'numerical', 'integerOnly'=>true));
 			$this->_rules = $rules;
-		}
+		} //var_dump($rules); die();
 		return $this->_rules;
 	}
 
@@ -180,4 +185,5 @@ class Profile extends UActiveRecord
 			return $this->_model;
 		}
 	}
+
 }

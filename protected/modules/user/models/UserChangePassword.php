@@ -15,10 +15,10 @@ class UserChangePassword extends CFormModel {
 			array('password, verifyPassword', 'length', 'max'=>128, 'min' => 4,'message' => UserModule::t("Incorrect password (minimal length 4 symbols).")),
 			array('verifyPassword', 'compare', 'compareAttribute'=>'password', 'message' => UserModule::t("Retype Password is incorrect.")),
 		) : array(
-			array('oldPassword, password, verifyPassword', 'required'),
-			array('oldPassword, password, verifyPassword', 'length', 'max'=>128, 'min' => 4,'message' => UserModule::t("Incorrect password (minimal length 4 symbols).")),
+			array('password, verifyPassword', 'required'),
+			array('password, verifyPassword', 'length', 'max'=>128, 'min' => 4,'message' => UserModule::t("Incorrect password (minimal length 4 symbols).")),
 			array('verifyPassword', 'compare', 'compareAttribute'=>'password', 'message' => UserModule::t("Retype Password is incorrect.")),
-			array('oldPassword', 'verifyOldPassword'),
+			//array('oldPassword', 'verifyOldPassword'),
 		);
 	}
 
@@ -29,7 +29,7 @@ class UserChangePassword extends CFormModel {
 	{
 		return array(
 			'oldPassword'=>UserModule::t("Old Password"),
-			'password'=>UserModule::t("password"),
+			'password'=>UserModule::t("Рassword"),
 			'verifyPassword'=>UserModule::t("Retype Password"),
 		);
 	}

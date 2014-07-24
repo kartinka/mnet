@@ -31,15 +31,31 @@ class Question extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('_id, question_text, answers, question_author, question_anonymous', 'required'),
-			array('question_anonymous', 'numerical', 'integerOnly'=>true),
-			array('_id, question_author', 'length', 'max'=>20),
-			array('question_detail, followers, images', 'safe'),
+			array('text, author_id', 'required'),
+			array('author_id', 'length', 'max'=>20),
+            array('create_at', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
+            array('viewed', 'numerical', 'integerOnly' => true),
+			array('detail, images, topics', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('_id, question_text, question_detail, followers, images, answers, question_author, question_anonymous', 'safe', 'on'=>'search'),
+			array('id, text, detail, images, author_id', 'safe', 'on'=>'search'),
 		);
 	}
+
+    public function scopes()
+    {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+
+        return array(
+            'answered' => array(
+                'with'=> array("answersCount" => array(
+                    'select'=> "answersCount",
+                    )
+                )
+            ),
+        );
+    }
 
 	/**
 	 * @return array relational rules.
@@ -49,6 +65,27 @@ class Question extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'answers' => array(self::HAS_MANY, 'Answer', 'q_id', 'order'=>'answers.create_at DESC',),
+            'answers_viewed'=> array(self::HAS_MANY, 'Answer', 'author_id', 'with' => 'questions', 'condition' => 't.author_id = ' . Yii::app()->user->id),
+            'comments' => array(self::HAS_MANY, 'Comment', array('id' => 'a_id'), 'through' => 'answers', 'order' => 'a_id'),
+            'topic' => array(self::BELONGS_TO, 'Topic', array('topics' => 'id')),
+            'answered' => array(self::HAS_MANY, 'Answer', 'q_id', 'joinType' => 'INNER JOIN',  'order'=>'answered.create_at DESC',),
+            //'views' =>  array(self::HAS_MANY, 'QuestionViewed', 'q_id', 'select' => 'SUM(viewed) as smth'),//array(self::STAT, 'QuestionViewed', 'q_id'),
+            'question_viewed' => array(self::HAS_MANY, 'QuestionViewed', array('q_id'), 'with' => array('current_job')),
+            'answersCount' => array(self::STAT, 'Answer', 'q_id'),
+            'followers' => array(self::HAS_MANY, 'FollowQuestion', 'q_id', 'select' => 't.user_id', 'group' => 'q_id'),
+
+            //'users' => array(self::HAS_ONE, 'User', 'user_id', 'through' => 'question_viewed'),
+            //'users_jobs' => array(self::HAS_MANY, 'Job', array('id' => 'user_id'), 'through' => 'users'),
+
+            //'most_active' => array(self::HAS_MANY, 'Answer', 'q_id', 'condition' => 'most_active.create_at BETWEEN DATE_SUB(NOW(), INTERVAL 5 DAY) AND NOW()', 'group' => 'topics', 'order'=>'most_active.create_at DESC',  'limit' => 7),
+            //'related_questions' => array(self::HAS_ONE, 'Question', 'id', 'alias' => 'another_q', 'condition' => 'related_questions.topics=another_q.topics', 'order'=>'related_questions.create_at DESC'),
+            /*
+            'users' => array(self::HAS_ONE, 'WebUser', array('author_id'=>'id'), 'through' => 'answers'),
+            'profiles' => array(self::HAS_ONE, Yii::app()->getModule('user'), array('id'=>'author_id'), 'through' => 'users'),
+            */
+            'mad'=>array(self::STAT, 'Answer', 'q_id') //, 'joinType' => 'INNER JOIN', 'group' => 'q_id'),
+
 		);
 	}
 
@@ -58,14 +95,12 @@ class Question extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'_id' => 'ID',
-			'question_text' => 'Question Text',
-			'question_detail' => 'Question Detail',
-			'followers' => 'Followers',
+			'id' => 'ID',
+			'text' => 'Question Text',
+			'detail' => 'Question Detail',
 			'images' => 'Images',
-			'answers' => 'Answers',
-			'question_author' => 'Question Author',
-			'question_anonymous' => 'Post anonymously',
+            'topics' => 'Topics',
+			'author_id' => 'Question Author',
 		);
 	}
 
@@ -87,20 +122,31 @@ class Question extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('_id',$this->_id,true);
-		$criteria->compare('question_text',$this->question_text,true);
-		$criteria->compare('question_detail',$this->question_detail,true);
-		$criteria->compare('followers',$this->followers,true);
-		$criteria->compare('images',$this->images,true);
-		$criteria->compare('answers',$this->answers,true);
-		$criteria->compare('question_author',$this->question_author,true);
-		$criteria->compare('question_anonymous',$this->question_anonymous);
+		$criteria->compare('id',$this->_id,true);
+		$criteria->compare('text',$this->text,true);
+		$criteria->compare('detail',$this->detail,true);
+		$criteria->compare('author_id',$this->author_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
+    public function getSuggest($q) {
+
+        $c = new CDbCriteria();
+        $c->with = array('answers', 'comments');
+//      $c->with = array('comments');
+
+        $c->addSearchCondition('t.text', $q, true, 'OR');
+        $c->addSearchCondition('t.detail', $q, true, 'OR');
+
+        $c->addSearchCondition('answers.text', $q, true, 'OR');
+        $c->addSearchCondition('comments.text', $q, true, 'OR');
+
+        return $this->findAll($c);
+
+    }
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

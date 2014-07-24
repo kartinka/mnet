@@ -8,7 +8,10 @@ class User extends CActiveRecord
 	
 	//TODO: Delete for next version (backward compatibility)
 	const STATUS_BANED=-1;
-	
+
+    public $class;
+    public $text;
+
 	/**
 	 * The followings are the available columns in table 'users':
 	 * @var integer $id
@@ -69,6 +72,7 @@ class User extends CActiveRecord
 			array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
 			array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => UserModule::t("Incorrect symbols (A-z0-9).")),
 			array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
+            array('profile_picture', 'file', 'types'=>'jpg, gif, png', 'maxSize' => 1048576, 'allowEmpty'=>true),
 		):array()));
 	}
 
@@ -80,6 +84,24 @@ class User extends CActiveRecord
         $relations = Yii::app()->getModule('user')->relations;
         if (!isset($relations['profile']))
             $relations['profile'] = array(self::HAS_ONE, 'Profile', 'user_id');
+
+        $relations['answers'] = array(self::HAS_MANY, 'Answer', 'author_id', 'with' => 'questions');
+        //$relations['questions'] = array(self::HAS_MANY, 'Question', array('q_id' => 'author_id'), 'through' => 'answers');
+
+        $relations['jobs'] = array(self::HAS_MANY, 'Job', 'user_id');
+        $relations['current_job'] = array(self::HAS_ONE, 'Job', 'user_id', 'condition' => 'current_job.to = 0000');
+        $relations['any_job'] = array(self::HAS_ONE, 'Job', 'user_id', 'joinType' => 'LEFT JOIN', 'on' => 'any_job.to = 0000');
+
+        $relations['followed'] = array(self::HAS_MANY, 'FollowPeople', 'user_id');
+        $relations['following'] = array(self::HAS_MANY, 'FollowPeople', 'follow_user_id');
+        $relations['followed_by_people'] = array(self::STAT, 'FollowPeople', 'follow_user_id');
+        $relations['recommended'] = array(self::HAS_MANY, 'FollowPeople', 'user_id', 'select' => '*, rand() as rand', 'order' => 'recommended.follow_user_id = :param DESC, rand');
+
+        $relations['invited'] = array(self::HAS_MANY, 'Message', 'sender_id', 'condition' => 'is_invitation = "1"');
+
+        $relations['follow_question'] = array(self::HAS_MANY, 'FollowQuestion', 'user_id');
+        $relations['follow_topic'] = array(self::HAS_MANY, 'FollowTopic', 'user_id');
+
         return $relations;
 	}
 
@@ -94,6 +116,7 @@ class User extends CActiveRecord
 			'password'=>UserModule::t("Password"),
 			'verifyPassword'=>UserModule::t("Retype Password"),
 			'email'=>UserModule::t("E-mail"),
+            'profile_picture'=>UserModule::t("Profile Picture"),
 			'verifyCode'=>UserModule::t("Verification Code"),
 			'activkey' => UserModule::t("activation key"),
 			'createtime' => UserModule::t("Registration date"),
@@ -123,6 +146,9 @@ class User extends CActiveRecord
             'notsafe'=>array(
             	'select' => 'id, username, password, email, activkey, create_at, lastvisit_at, superuser, status',
             ),
+            'only_user'=>array(
+                'select'=>"id",
+            ),
         );
     }
 	
@@ -130,8 +156,10 @@ class User extends CActiveRecord
     {
         return CMap::mergeArray(Yii::app()->getModule('user')->defaultScope,array(
             'alias'=>'user',
-            'select' => 'user.id, user.username, user.email, user.create_at, user.lastvisit_at, user.superuser, user.status',
+            'select' => 'user.id, user.username, user.email, user.profile_picture, user.create_at, user.lastvisit_at, user.superuser, user.status',
         ));
+
+
     }
 	
 	public static function itemAlias($type,$code=NULL) {
@@ -195,5 +223,25 @@ class User extends CActiveRecord
 
     public function setLastvisit($value) {
         $this->lastvisit_at=date('Y-m-d H:i:s',$value);
+    }
+
+    public function getFullName() {
+        //return $this->username;
+        return $this->profile->firstname . ' ' . $this->profile->lastname;
+    }
+
+    public function getSuggest($q) {
+        /*
+        $c = new CDbCriteria();
+        $c->addSearchCondition('username', $q, true, 'OR');
+        $c->addSearchCondition('email', $q, true, 'OR');
+        return $this->findAll($c);
+        */
+        $c = new CDbCriteria();
+        $c->addSearchCondition('profile.firstname', $q, true, 'OR');
+        $c->addSearchCondition('profile.lastname', $q, true, 'OR');
+        $c->addSearchCondition('username', $q, true, 'OR');
+        return $this->findAll($c);
+
     }
 }
